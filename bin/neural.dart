@@ -18,7 +18,7 @@ void main() {
 
   // Treinamento da rede neural
   int oldEpoch = 0;
-  neuralNetwork.train(trainingSet, 100000, 0.3, (epoch, input, output) {
+  neuralNetwork.train(trainingSet, 1000000, 0.5, (epoch, input, output) {
     if (epoch != oldEpoch) {
       print('-- $epoch --------------------------------------------');
       cursor.moveUp(5);

@@ -16,6 +16,8 @@ class Network {
 
   createLayers() {
     // don't need create a layer for input layer, it is the pure input number
+    //Layer inputLayer = Layer(input);
+    //layers.add(inputLayer);
 
     // create a layer with n neurons for hidden layer
     for (int n in hidden) {

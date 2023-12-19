@@ -42,9 +42,9 @@ class Neuron {
 
     // Update weights and bias based on the error, the gradient, and the learning rate
     for (int i = 0; i < weights.length; i++) {
-      weights[i] += (learningRate * 10) * error * gradient * inputs[i];
+      weights[i] += (learningRate) * error * gradient * inputs[i];
     }
-    bias += (learningRate * 10) * error * gradient;
+    bias += (learningRate) * error * gradient;
 
     // Return the error to be passed to the previous layer
     return error * gradient * weights.reduce((sum, weight) => sum + weight);
