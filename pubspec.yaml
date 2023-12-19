@@ -1,0 +1,16 @@
+name: neural
+description: Basic Neural Network implemented in Dart.
+version: 1.0.0
+# repository: https://github.com/danrosselli/neural.git
+
+environment:
+  sdk: ^3.2.3
+
+# Add regular dependencies here.
+dependencies:
+  console: ^4.1.0
+  # path: ^1.8.0
+
+dev_dependencies:
+  lints: ^3.0.0
+  test: ^1.24.0
