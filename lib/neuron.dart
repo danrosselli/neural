@@ -2,7 +2,7 @@ import 'dart:math';
 
 class Neuron {
   late List<double> inputs;
-  List<double> weights = [];
+  late List<double> weights = [];
 
   double bias = 1;
   late double output;
@@ -14,7 +14,7 @@ class Neuron {
     // fill the weights with random values in the first use
     if (weights.isEmpty) {
       for (int i = 0; i < this.inputs.length; i++) {
-        weights.add(generateRandomNumber(0.3, 0.7));
+        weights.add(generateRandomNumber(0.4, 0.6));
       }
       //weights = List.filled(this.inputs.length, 0.5);
     }
@@ -35,10 +35,10 @@ class Neuron {
 
   double backward(double error, double learningRate) {
     // Calculate the gradient (derivative) of the sigmoid activation function
-    gradient = output * (1 - output);
+    gradient = sigmoidDerivative(output);
 
     // Calculate the gradient (derivative) of the ReLU activation function
-    //gradient = output > 0 ? 1 : 0;
+    //gradient = reluDerivative(output);
 
     // Update weights and bias based on the error, the gradient, and the learning rate
     for (int i = 0; i < weights.length; i++) {
@@ -64,15 +64,14 @@ class Neuron {
   }
 
   // activation sgmoid (always between 0 and 1)
-  double sigmoid(double x) {
-    return 1 / (1 + exp(-x));
-  }
+  double sigmoid(double x) => 1 / (1 + exp(-x));
 
   // activation ReLU (Rectified Linear Unit)
-  double relu(double x) {
-    // original approach
-    //return max(0, x);
-    // approach to normalize ReLU between 0 and 1
-    return max(0, x) / (1 + exp(-x));
-  }
+  double relu(double x) => max(0, x);
+
+  // The derivative of the Sigmoid.
+  double sigmoidDerivative(double x) => x * (1 - x);
+
+  // The derivative of ReLU.
+  double reluDerivative(double x) => x > 0 ? 1 : 0;
 }

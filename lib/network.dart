@@ -1,5 +1,5 @@
 import './layer.dart';
-import './trainer.dart';
+import 'types.dart';
 
 class Network {
   int input;
@@ -47,11 +47,14 @@ class Network {
       [double learningRate = 0.1, void Function(int epoch, List<double>, List<double>)? onIterate]) {
     for (int epoch = 0; epoch < epochs; epoch++) {
       for (var data in trainingData) {
+        // get training data
         var input = data.input;
         var expectedOutput = data.output;
 
         // Forward pass
         var output = forward(input);
+
+        // if has function to show this round results
         if (onIterate != null) {
           onIterate(epoch, input, output);
         }
