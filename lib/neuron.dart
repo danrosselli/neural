@@ -47,7 +47,7 @@ class Neuron {
     bias += (learningRate) * error * gradient;
 
     // Return the error to be passed to the previous layer
-    return error * gradient * weights.reduce((sum, weight) => sum + weight);
+    return error * gradient * weights.reduce((prevSum, weight) => prevSum + weight);
   }
 
   double generateRandomNumber(double min, double max) {
@@ -67,11 +67,15 @@ class Neuron {
   double sigmoid(double x) => 1 / (1 + exp(-x));
 
   // activation ReLU (Rectified Linear Unit)
-  double relu(double x) => max(0, x);
+  double relu(double x) {
+    return max(0, x);
+  }
 
   // The derivative of the Sigmoid.
   double sigmoidDerivative(double x) => x * (1 - x);
 
   // The derivative of ReLU.
-  double reluDerivative(double x) => x > 0 ? 1 : 0;
+  double reluDerivative(double x) {
+    return x > 0 ? 1 : 0;
+  }
 }
