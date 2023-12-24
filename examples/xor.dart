@@ -5,15 +5,15 @@ void main() {
   // XOR training data
   var cursor = Cursor();
 
+  // Instanciação da rede neural
+  Network neuralNetwork = Network(input: 2, hidden: [3], output: 1);
+
   var trainingSet = [
     Learn(input: [0, 0], output: [0]),
     Learn(input: [0, 1], output: [1]),
     Learn(input: [1, 0], output: [1]),
     Learn(input: [1, 1], output: [0]),
   ];
-
-  // Instanciação da rede neural
-  Network neuralNetwork = Network(input: 2, hidden: [3], output: 1);
 
   // Treinamento da rede neural
   int oldEpoch = 0;
